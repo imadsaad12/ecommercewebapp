@@ -3,22 +3,14 @@ const app = express();
 const mongoose = require("mongoose");
 const Product = require("./models/Products");
 const Home = require("./models/home");
-<<<<<<< HEAD
 const cors = require('cors');
 
-=======
-const cors=require("cors")
->>>>>>> f281607d5d3cf76854cf45da2fa1e3129130001c
 const homeRoute = require('./Routes/HomeRoute');
 
 //middleware
 app.use(express.json());
-<<<<<<< HEAD
 app.use(cors());
 
-=======
-app.use(cors())
->>>>>>> f281607d5d3cf76854cf45da2fa1e3129130001c
 //connect to database and start listen to specific port
 mongoose
   .connect(
