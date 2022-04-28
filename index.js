@@ -3,11 +3,13 @@ const app = express();
 const mongoose = require("mongoose");
 const Product = require("./models/Products");
 const Home = require("./models/home");
+const cors = require('cors');
 
 const homeRoute = require('./Routes/HomeRoute');
 
 //middleware
 app.use(express.json());
+app.use(cors());
 
 //connect to database and start listen to specific port
 mongoose
