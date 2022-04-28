@@ -4,6 +4,8 @@ const mongoose = require("mongoose");
 const Product = require("./models/Products");
 const Home = require("./models/home");
 
+const homeRoute = require('./Routes/HomeRoute');
+
 //middleware
 app.use(express.json());
 
@@ -46,17 +48,7 @@ app.post("/products", async (req, res) => {
   }
 });
 
-app.post("/home", async (req, res) => {
-  const data = req.body;
-  try {
-    const newHome = await new Home(data);
-    await newHome.save();
-    res.send("done");
-  } catch (error) {
-    console.log(error);
-    res.send("failed");
-  }
-});
+app.use('/home', homeRoute);
 
 app.get("/home", async (req, res) => {
   try {
