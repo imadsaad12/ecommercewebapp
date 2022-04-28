@@ -88,10 +88,12 @@ app.delete("/home/:id",async (req,res)=>{
   try {
     const id=req.params.id;
     await Home.findByIdAndDelete(id)
+    console.log(id)
     res.send("done")
   } catch (error) {
     console.log(error);
     res.send("failed")
   }
 })
+
 //post , get , delete , put
