@@ -2,18 +2,15 @@
 const express = require("express");
 
 const route = express.Router();
-const Home = require("../models/home");
+const homeCont = require('../Controllers/HomeController');
+route.post("/", homeCont.addHome);
 
-route.post("/", async (req, res) => {
-    const data = req.body;
-    try {
-      const newHome = await new Home(data);
-      await newHome.save();
-      res.send("done");
-    } catch (error) {
-      console.log(error);
-      res.send("failed");
-    }
-  });
+route.get("/", homeCont.getAllHomes);
+
+route.get("/:id", homeCont.getSpecificHome);
+  
+route.put("/:id",homeCont.updateHome)
+  
+route.delete("/:id",homeCont.deleteHome)
 
   module.exports = route;
