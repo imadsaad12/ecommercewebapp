@@ -30,6 +30,7 @@ app.get("/products", async (req, res) => {
     },
     lastname: "hashem",
   };
+  console.log("new feature from imad")
   res.json(data);
 });
 
