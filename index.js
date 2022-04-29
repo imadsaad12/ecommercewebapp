@@ -17,10 +17,7 @@ mongoose
     "mongodb+srv://mydb:93928@cluster0.g0he0.mongodb.net/Ecommerce?retryWrites=true&w=majority"
   )
   .then((res) => {
-    app.listen(4000, () => {
-      console.log("server is running on port 4000 . . .")
-      console.log("Welcome To Mazarita International Film Festival")
-    });
+    app.listen(4000, () => console.log("server is running on port 4000 . . ."));
   })
   .catch((err) => {
     console.log(err);
