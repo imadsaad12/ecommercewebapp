@@ -51,3 +51,5 @@ app.post("/products", async (req, res) => {
 });
 
 app.use('/home', homeRoute);
+
+console.log("Ali Hashem");
