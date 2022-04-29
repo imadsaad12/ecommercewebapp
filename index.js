@@ -17,7 +17,10 @@ mongoose
     "mongodb+srv://mydb:93928@cluster0.g0he0.mongodb.net/Ecommerce?retryWrites=true&w=majority"
   )
   .then((res) => {
-    app.listen(4000, () => console.log("server is running on port 4000 . . ."));
+    app.listen(4000, () => {
+      console.log("server is running on port 4000 . . .")
+      console.log("Welcome To Mazarita International Film Festival")
+    });
   })
   .catch((err) => {
     console.log(err);
@@ -38,6 +41,7 @@ app.post("/products", async (req, res) => {
   const data = req.body;
   try {
     console.log(data);
+    console.log("HI")
     const newProduct = await new Product({
       name: data.name,
       color: data.color,
