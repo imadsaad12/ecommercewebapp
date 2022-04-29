@@ -10,7 +10,7 @@ const homeRoute = require('./Routes/HomeRoute');
 //middleware
 app.use(express.json());
 app.use(cors());
-
+console.log("test branch")
 //connect to database and start listen to specific port
 mongoose
   .connect(
