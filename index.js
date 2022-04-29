@@ -41,6 +41,7 @@ app.post("/products", async (req, res) => {
   const data = req.body;
   try {
     console.log(data);
+    console.log("HI")
     const newProduct = await new Product({
       name: data.name,
       color: data.color,
