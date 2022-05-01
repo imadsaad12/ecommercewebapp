@@ -3,14 +3,14 @@ const app = express();
 const mongoose = require("mongoose");
 const Product = require("./models/Products");
 const Home = require("./models/home");
-const cors = require('cors');
+const cors = require("cors");
 
-const homeRoute = require('./Routes/HomeRoute');
+const homeRoute = require("./Routes/HomeRoute");
 
 //middleware
 app.use(express.json());
 app.use(cors());
-console.log("test branch")
+
 //connect to database and start listen to specific port
 mongoose
   .connect(
@@ -18,8 +18,9 @@ mongoose
   )
   .then((res) => {
     app.listen(4000, () => {
-      console.log("server is running on port 4000 . . .")
-      console.log("Welcome To Mazarita International Film Festival")
+      console.log("server is running on port 4000 . . .");
+      console.log("Welcome To Mazarita International Film Festival");
+      console.log("imad")
     });
   })
   .catch((err) => {
@@ -33,6 +34,7 @@ app.get("/products", async (req, res) => {
     },
     lastname: "hashem",
   };
+  console.log("new feature from imad");
   res.json(data);
 });
 
@@ -54,4 +56,6 @@ app.post("/products", async (req, res) => {
   }
 });
 
-app.use('/home', homeRoute);
+
+console.log("Ali Hashem");
+app.use("/home", homeRoute);
