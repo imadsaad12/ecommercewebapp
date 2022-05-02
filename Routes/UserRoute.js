@@ -4,12 +4,12 @@ const User = require("../models/Users");
 
 route.post("/login", async (req, res) => {
 
+    console.log(req.body)
     const data = req.body;
     const email = data.email;
     const password = data.password;
-
     try {
-        await User.findOne({ email: email, password: password }, (err, result) => {
+        await User.findOne({ email: email, password: password }, async (err, result) => {
             if (err)
                 return res.status(500).send("Error during Login");
             if (!result)
@@ -33,7 +33,7 @@ route.post("/signup", async (req, res) => {
             return res.status(404).send("User already exist");
         else {
             try {
-                const user = new User({
+                const user = await new User({
                     name: {
                         firstname: data.name.firstname,
                         lastname: data.name.lastname,
