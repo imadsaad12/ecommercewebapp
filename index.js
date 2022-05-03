@@ -2,10 +2,10 @@ const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 //const Product = require("./models/Products");
-//const Home = require("./models/home");
+const Home = require("./models/home");
 const cors = require("cors");
 const userRoute=require("./Routes/UserRoute");
-//const homeRoute = require('./Routes/HomeRoute');
+const homeRoute = require('./Routes/HomeRoute');
 
 //middleware
 app.use(express.json());
@@ -27,3 +27,4 @@ mongoose
 
 
 app.use("/",userRoute);
+app.use("/home",homeRoute);
