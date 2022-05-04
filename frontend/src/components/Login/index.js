@@ -25,7 +25,7 @@ const Index = () => {
   const navigate = useNavigate();
   const [values, setvalues] = useState({});
   // const [dummy, setdummy] = useState([]);
-  // const [loading, setloading] = useState(false);
+   const [loading, setloading] = useState(false);
   // useEffect(() => {
   //   setloading(true);
   //   axios
@@ -41,7 +41,6 @@ const Index = () => {
   // }, []);
   const handleSubmit = async () => {
     try {
-      console.log(values);
       await axios.post(`${api}/login`, values);
       navigate("/home");
     } catch (error) {
