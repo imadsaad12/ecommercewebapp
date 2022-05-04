@@ -24,31 +24,30 @@ route.post("/login", async (req, res) => {
 
 route.post("/signup", async (req, res) => {
     const data = req.body;
-    await User.findOne({ email: data.email }, async (err, result) => {
-        if (err)
-            return res.status(500).send("Error while registering,try later");
-        if (result)
-            return res.status(404).send("User already exist");
-        else {
-            try {
-                const user = await new User({
-                    name: {
-                        firstname: data.name.firstname,
-                        lastname: data.name.lastname,
-                    },
-                    username: data.username,
-                    email: data.email,
-                    password: data.password,
-                    age: data.age
-                });
-                await user.save();
-                res.send("Registered a new User");
-            } catch (error) {
-                console.log(error);
-                res.send("Failed to register a new User");
-            }
+    const newUser=await User.findOne({ email: data.email });
+    if(newUser){
+        res.status(400).send("user exist");
+    }
+    else{
+        try {
+            const user = await new User({
+                name: {
+                    firstname: data.name.firstname,
+                    lastname: data.name.lastname,
+                },
+                username: data.username,
+                email: data.email,
+                password: data.password,
+                age: data.age
+            });
+            await user.save();
+            res.send("Registered a new User");
+        } catch (error) {
+            console.log(error);
+            res.send("Failed to register a new User");
         }
-    });
+    }
+
 });
 
 module.exports = route;
