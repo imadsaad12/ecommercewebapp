@@ -3,21 +3,19 @@ const route = express.Router();
 const User = require("../models/Users");
 
 route.post("/login", async (req, res) => {
-
     console.log(req.body)
-    const data = req.body;
-    const email = data.email;
-    const password = data.password;
     try {
-        await User.findOne({ email: email, password: password }, async (err, result) => {
-            if (err)
-                return res.status(500).send("Error during Login");
-            if (!result)
-                return res.status(404).send("No User found or Wrong Password");
-            else
-                return res.status(200).send("Login Succeed");
-        });
-
+        const data = req.body;
+        const email = data.email;
+        const password = data.password;
+        const user=await User.findOne({ email: email, password: password });
+        if(user){
+            console.log(user)
+            res.status(200).send("done")
+        }
+        else{
+            res.status(400).send("failed")
+        }
     } catch (error) {
         console.log(error);
     }
