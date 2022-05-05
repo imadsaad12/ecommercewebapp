@@ -2,11 +2,27 @@ const mongoose=require("mongoose");
 // define schema (document)
 const productSchema=new mongoose.Schema({
     name:String,
-    color:String,
+    
+    colors:[
+        {color:String}
+    ],
+    
     numberOfItems:{
         type:Number,
         required:true
-    }
+    },
+    
+    rating:Number,
+    
+    description:String,
+    
+    details:String,
+    
+    price:Number,
+
+    images:[
+        {url:String}
+    ]
 });
 
 // define collection to the user schema
