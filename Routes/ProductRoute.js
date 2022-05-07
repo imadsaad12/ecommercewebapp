@@ -1,30 +1,8 @@
 const express = require("express");
 const route = express.Router();
-const products=require("../models/Products");
- 
-route.post("/Products", async(req,res)=> {
-    try {
-        const data=req.body
-        const newProduct = await new products({
-            name:data.name,color:data.colors,numberOfItems:data.numberOfItems,rating:data.rating,
-            description:data.description,details:data.details,price:data.price,images:data.images
-        })
-        await newProduct.save();
-        res.send("new product added")
+const productController = require("../controllers/ProductController");
 
-    } catch (error) {
-        console.log(error)
-        res.send("fail to add product")
-    } 
-} );
-route.get("/Products",async(req,res)=>{
-    try {
-      const data= await products.find();
-      res.json(data);
+route.post("/Products", productController.addProduct);
+route.get("/Products", productController.getProducts);
 
-    } catch (error) {
-        console.log(error)
-        res.send("fail to get productss")
-    }
-})
-module.exports=route
+module.exports = route
