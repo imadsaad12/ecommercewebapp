@@ -27,7 +27,24 @@ const getProducts = async (req, res) => {
     }
 }
 
+const deleteProduct = async (req, res) => {
+    try {
+        var pid = req.params.id;
+        if (pid != null)
+            var deletedP = await products.findByIdAndDelete(pid);
+        if (!deletedP) {
+            res.status(400).send("failed to delete product");
+        } else {
+            res.status(200).send("Product deleted successfully");
+        }
+    } catch (error) {
+        console.log(error);
+        res.send("Product to be deleted not found");
+    }
+}
+
 module.exports = {
     addProduct,
-    getProducts
+    getProducts,
+    deleteProduct
 }
