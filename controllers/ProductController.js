@@ -43,8 +43,43 @@ const deleteProduct = async (req, res) => {
     }
 }
 
+const updateProduct = async (req, res) => {
+    try {
+        var pid = req.query.id;
+        if (pid != null){
+        var newData=req.body;
+         var upadetedP = await products.findByIdAndUpdate(pid,newData);
+        }
+        if (!upadetedP) {
+            res.status(400).send("failed to upadete product");
+        } else {
+            res.status(200).send("Product upadeted successfully");
+        }
+    } catch (error) {
+        console.log(error);
+        res.send("Product to be updated not found");
+    }
+}
+
+
+const getProductsById = async (req, res) => {
+    try {
+        var pid=req.params.id;
+                                    //you can use "findbyid(pid)"
+        const data = await products.find({_id:pid});
+        res.json(data);
+
+    } catch (error) {
+        console.log(error)
+        res.send("fail to get productss")
+    }
+}
+
+
 module.exports = {
     addProduct,
     getProducts,
-    deleteProduct
+    deleteProduct,
+    updateProduct,
+    getProductsById
 }
