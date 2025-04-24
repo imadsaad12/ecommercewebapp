@@ -14,7 +14,7 @@ app.use(cors());
 //connect to database and start listen to specific port
 mongoose
   .connect(
-    "mongodb+srv://mydb:93928@cluster0.g0he0.mongodb.net/Ecommerce?retryWrites=true&w=majority"
+    ""
   )
   .then((res) => {
     app.listen(4000, () => {
